@@ -12,101 +12,140 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const links = ['About Us', 'Works', 'Portfolio', 'Contact Us'];
+  const links = [
+    { label: 'About Us',   href: '#about' },
+    { label: 'Works',      href: '#works-section' },
+    { label: 'Portfolio',  href: '#portfolio' },
+    { label: 'Contact Us', href: '#enquiry' },
+  ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 ${
-        isScrolled ? 'py-4 bg-[#0d34de]/80 backdrop-blur-md border-b border-white/5' : 'py-8 bg-transparent'
-      }`}
-    >
-      <div className="max-w-[1400px] mx-auto flex items-center justify-between">
-        
-        {/* Left Section - Logo & Author */}
-        <div className="flex items-center gap-5">
-          {/* Custom White Minimal Logo */}
-          <div className="flex items-center space-x-[3px] opacity-90 cursor-pointer hover:scale-105 transition-transform relative z-50">
-            <div className="w-2 h-6 bg-white/70 rounded-full"></div>
-            <div className="w-3 h-8 bg-white rounded-full relative -top-0.5 shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
-            <div className="w-2 h-6 bg-white/70 rounded-full"></div>
-          </div>
-          
-          {/* Avatar & Text */}
-          <div className="hidden sm:flex items-center gap-3">
-            <div className="relative group cursor-pointer">
-              <img 
-                src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 
-                alt="Avatar" 
-                className="w-8 h-8 rounded-full border-[1.5px] border-transparent group-hover:border-white/50 transition-all object-cover relative z-10"
-              />
-              <div className="absolute inset-0 bg-white rounded-full blur-sm opacity-0 group-hover:opacity-40 transition-opacity"></div>
-            </div>
-            <span className="text-white font-medium text-[15px] tracking-wide">Dora x Minh</span>
-          </div>
-        </div>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 ${
+          isScrolled
+            ? 'py-4  backdrop-blur-md'
+            : 'py-8 bg-transparent'
+        }`}
+      >
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between">
 
-        {/* Right Section - Desktop Links & Button */}
-        <div className="hidden md:flex items-center gap-8 md:gap-10">
-          <div className="flex items-center gap-8">
-            {links.map((link) => (
-               <a 
-                 key={link} 
-                 href={`#${link.toLowerCase().replace(' ', '-')}`} 
-                 className="text-white/90 text-sm font-medium hover:text-white transition-colors tracking-wide"
-                >
-                 {link}
-               </a>
-            ))}
+          {/* Logo & brand */}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center space-x-[3px] cursor-pointer hover:scale-105 transition-transform">
+              <div className="w-2 h-6 bg-white/60 rounded-full" />
+              <div className="w-3 h-8 bg-white rounded-full relative -top-0.5 shadow-[0_0_12px_rgba(56,189,248,0.6)]" />
+              <div className="w-2 h-6 bg-white/60 rounded-full" />
+            </div>
+            <span className="hidden sm:block text-white font-semibold text-[15px] tracking-wide">
+              Spirora<span className="text-brand-accent">Innovations</span>
+            </span>
           </div>
-          
-          <button className="px-6 py-2.5 rounded-[20px] bg-[#111111] text-white text-xs font-bold tracking-widest hover:bg-black hover:scale-105 transition-all shadow-xl hover:shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer">
-            2023
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-9">
+            {links.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="text-white/80 text-sm font-medium hover:text-white transition-colors relative group tracking-wide"
+              >
+                {label}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand-accent rounded-full transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+            <a
+              href="#enquiry"
+              className="px-6 py-2.5 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-primary/80 hover:scale-105 transition-all shadow-[0_0_20px_rgba(31,105,255,0.35)]"
+            >
+              Get in Touch
+            </a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="md:hidden text-white p-2 -mr-2 hover:bg-white/10 rounded-full transition-colors"
+            aria-label="Open menu"
+          >
+            <Menu size={26} />
           </button>
         </div>
+      </motion.nav>
 
-        {/* Mobile Toggle Button */}
-        <div className="md:hidden relative z-50">
-           <button 
-             onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-             className="text-white p-2 -mr-2 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
-           >
-             {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-           </button>
-        </div>
-        
-      </div>
-
-      {/* Mobile Nav Overlay / Dropdown */}
+      {/* ── Mobile bottom-sheet overlay ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -20, height: 0 }}
-            className="absolute top-full left-0 right-0 bg-[#0d2ca1]/95 backdrop-blur-xl border-b border-white/10 md:hidden overflow-hidden"
-          >
-             <div className="flex flex-col items-center gap-8 py-10 px-6">
-                {links.map((link) => (
-                   <motion.a 
-                     key={`mobile-${link}`} 
-                     href={`#${link.toLowerCase().replace(' ', '-')}`}
-                     onClick={() => setMobileMenuOpen(false)}
-                     whileHover={{ scale: 1.05 }}
-                     className="text-white text-xl font-medium tracking-wider"
-                   >
-                     {link}
-                   </motion.a>
+          <>
+            {/* Scrim */}
+            <motion.div
+              key="scrim"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Sheet — slides up from bottom to ~50vh */}
+            <motion.div
+              key="sheet"
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '100%', opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 320, damping: 40 }}
+              className="fixed bottom-0 left-0 right-0 z-[70] rounded-t-[2rem] overflow-hidden"
+              style={{ background: 'linear-gradient(160deg, #0c1f55 0%, #060d1f 100%)', border: '1px solid rgba(31,105,255,0.25)' }}
+            >
+              {/* Drag handle */}
+              <div className="flex justify-center pt-4 pb-2">
+                <div className="w-12 h-1.5 rounded-full bg-white/25" />
+              </div>
+
+              {/* Close button */}
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="absolute top-4 right-5 text-white/60 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Close menu"
+              >
+                <X size={22} />
+              </button>
+
+              {/* Links */}
+              <div className="flex flex-col items-center gap-1 px-6 pt-4 pb-10">
+                {links.map(({ label, href }, i) => (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 + i * 0.07 }}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full text-center py-4 text-xl font-semibold text-white/90 hover:text-white tracking-wide hover:text-brand-accent transition-colors"
+                  >
+                    {label}
+                  </motion.a>
                 ))}
-                <button className="mt-4 w-full max-w-[200px] px-8 py-3.5 rounded-[20px] bg-[#111111] text-white text-sm font-bold tracking-widest shadow-2xl hover:bg-black transition-colors">
-                  2023
-                </button>
-             </div>
-          </motion.div>
+
+                <motion.a
+                  href="#enquiry"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + links.length * 0.07 }}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="mt-6 w-full text-center py-4 rounded-2xl bg-brand-primary text-white text-lg font-bold shadow-[0_0_24px_rgba(31,105,255,0.45)] hover:bg-brand-primary/80 transition-colors"
+                >
+                  Get in Touch
+                </motion.a>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

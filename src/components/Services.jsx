@@ -55,7 +55,7 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
           >
-            Digital <span className="text-glow text-brand-primary">Excellence</span> Delivered
+            Digital <span className="text-glow text-brand-accent">Excellence</span> Delivered
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export default function Services() {
               className="glass-card p-8 group cursor-pointer"
               style={{ perspective: 1000 }}
             >
-              <div className={`w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 overflow-hidden relative`}>
+              <div className={`w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mb-6 overflow-hidden relative`}>
                 <div className={`absolute inset-0 bg-current opacity-20 blur-xl group-hover:opacity-40 transition-opacity ${service.color}`} />
                 <service.icon className={`w-7 h-7 relative z-10 ${service.color}`} strokeWidth={1.5} />
               </div>

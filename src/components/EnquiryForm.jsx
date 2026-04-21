@@ -105,7 +105,7 @@ function EnquiryForm() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         onSubmit={handleSubmit}
-        className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-4 md:p-4 border border-slate-700/50"
+        className="bg-brand-deep/60 backdrop-blur-sm rounded-2xl p-4 md:p-4 border border-brand-primary/25"
       >
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Name */}
@@ -120,7 +120,7 @@ function EnquiryForm() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
                 placeholder="John Doe"
               />
             </div>
@@ -139,7 +139,7 @@ function EnquiryForm() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
                 placeholder="john@example.com"
               />
             </div>
@@ -157,7 +157,7 @@ function EnquiryForm() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -175,7 +175,7 @@ function EnquiryForm() {
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
                 placeholder="Your Company"
               />
             </div>
@@ -191,11 +191,11 @@ function EnquiryForm() {
               value={formData.projectType}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
             >
-              <option value="" className="bg-slate-800">Select project type</option>
+              <option value="" className="bg-brand-dark">Select project type</option>
               {projectTypes.map(type => (
-                <option key={type} value={type} className="bg-slate-800">{type}</option>
+                <option key={type} value={type} className="bg-brand-dark">{type}</option>
               ))}
             </select>
           </div>
@@ -214,7 +214,7 @@ function EnquiryForm() {
                 onChange={handleInputChange}
                 required
                 rows={4}
-                className="w-full pl-10 pr-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none"
+                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none"
                 placeholder="Tell us about your project, goals, challenges, and any specific requirements..."
               />
             </div>
@@ -226,7 +226,7 @@ function EnquiryForm() {
           whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={isSubmitting}
-          className="w-full md:w-auto px-8 py-4 bg-brand-accent text-white font-semibold rounded-lg hover:bg-brand-accent/90 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 mx-auto"
+          className="w-full md:w-auto px-8 py-4 bg-brand-primary text-white font-semibold rounded-lg hover:bg-brand-primary/80 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-dark disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 mx-auto shadow-[0_0_20px_rgba(31,105,255,0.4)]"
         >
           {isSubmitting ? (
             <>

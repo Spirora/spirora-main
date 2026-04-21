@@ -34,7 +34,7 @@ export default function Portfolio() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
             >
-              Featured <span className="text-glow text-brand-purple">Projects</span>
+              Featured <span className="text-glow text-brand-accent">Projects</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function Portfolio() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="hidden md:flex px-6 py-3 rounded-full border border-brand-purple/50 text-white font-medium hover:bg-brand-purple/10 transition-colors shrink-0"
+            className="hidden md:flex px-6 py-3 rounded-full border border-brand-accent/50 text-white font-medium hover:bg-brand-accent/10 transition-colors shrink-0"
           >
             View All Work
           </motion.button>
@@ -64,7 +64,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
-              className="group relative rounded-2xl overflow-hidden glass border border-white/10 cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden glass border border-white/10 cursor-pointer hover:border-brand-accent/40 transition-all duration-500"
             >
               <div className="absolute inset-0 bg-brand-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay z-10" />
               
@@ -88,7 +88,7 @@ export default function Portfolio() {
                  </div>
                  
                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-brand-purple transition-colors">
+                    <h3 className="text-2xl font-bold text-white group-hover:text-brand-accent transition-colors">
                       {project.title}
                     </h3>
                     <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300">
@@ -107,7 +107,7 @@ export default function Portfolio() {
               </div>
               
               {/* Glowing hover border effect */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-brand-purple/50 rounded-2xl transition-colors duration-500 z-30 pointer-events-none" />
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-brand-accent/50 rounded-2xl transition-colors duration-500 z-30 pointer-events-none" />
             </motion.div>
           ))}
         </div>

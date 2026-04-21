@@ -68,7 +68,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-              Engineering the <span className="text-brand-accent">Edge</span> of Innovation
+              Engineering the <span className="text-glow text-brand-accent">Edge</span> of Innovation
             </h2>
             <p className="text-lg text-slate-400 leading-relaxed mb-4">
               XenonTech is not just an agency; we are your strategic technical partner. 
@@ -90,7 +90,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
                 className="flex items-start gap-4"
               >
-                <div className="p-3 rounded-xl bg-brand-primary/20 text-brand-primary border border-brand-primary/30">
+                <div className="p-3 rounded-xl bg-brand-primary/15 text-brand-primary border border-brand-primary/30">
                   <feature.icon className="w-6 h-6" />
                 </div>
                 <div>

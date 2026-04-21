@@ -33,7 +33,7 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-            Client <span className="text-brand-purple">Stories</span>
+            Client <span className="text-glow text-brand-accent">Stories</span>
           </h2>
         </motion.div>
 
@@ -54,7 +54,7 @@ export default function Testimonials() {
               </p>
               
               <div className="flex items-center gap-4 border-t border-white/10 pt-6 mt-auto">
-                <img src={t.avatar} alt={t.author} className="w-12 h-12 rounded-full border-2 border-brand-primary" />
+                <img src={t.avatar} alt={t.author} className="w-12 h-12 rounded-full border-2 border-brand-accent" />
                 <div>
                   <h4 className="text-white font-bold">{t.author}</h4>
                   <p className="text-brand-accent text-sm">{t.role}</p>
