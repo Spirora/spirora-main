@@ -1,202 +1,239 @@
-import { useRef, useState, useEffect, Suspense } from 'react';
-import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text, PerspectiveCamera, Html } from '@react-three/drei';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { useRef, useState, Suspense } from 'react';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence, useSpring } from 'framer-motion';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import * as THREE from 'three';
 
-// Skeleton Loader Component
+const slides = [
+  {
+    title: "BEST<br />3D WEB<br />DESIGNS",
+    subtitle: "Announcement",
+    desc: "Revealing the results of the Dora 3D web design challenge which happened last October",
+    tag: "2023"
+  },
+  {
+    title: "CREATIVE<br />DIGITAL<br />SOLUTIONS",
+    subtitle: "Innovation",
+    desc: "We build intuitive and stunning interfaces that redefine modern user experiences.",
+    tag: "AWARDS"
+  },
+  {
+    title: "FUTURE<br />OF WEB<br />INTERFACES",
+    subtitle: "Vision",
+    desc: "Pushing the boundaries of interactive design with bleeding-edge technologies.",
+    tag: "FUTURE"
+  }
+];
+
 function SkeletonLoader() {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="flex items-center justify-center w-full">
-        <div className="animate-pulse flex space-x-4 w-1/2">
-          <div className="rounded-full bg-slate-700/50 h-12 w-12 border border-brand-primary/20"></div>
-          <div className="flex-1 space-y-3 py-1">
-            <div className="h-3 bg-slate-700/50 rounded w-3/4"></div>
-            <div className="h-3 bg-slate-700/50 rounded w-1/2"></div>
-          </div>
-        </div>
-      </div>
+      <div className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full animate-spin"></div>
     </div>
   );
 }
 
-// IT Consulting 3D Visualization
-function ITConsultingVisualization() {
+function Abstract3DVisualization({ scrollYProgress }) {
   const groupRef = useRef();
-  const [windowWidth, setWindowWidth] = useState(1024);
+  const domeRef = useRef();
+  const shellRef = useRef();
+  const ringRef = useRef();
 
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    if (groupRef.current) {
+      // Gentle floating base animation
+      groupRef.current.position.y = Math.sin(t * 1.5) * 0.15;
+      
+      const p = scrollYProgress ? scrollYProgress.get() : 0;
+      
+      // Dynamic Parallax Rotation
+      groupRef.current.rotation.y = Math.sin(t * 0.4) * 0.1 + (p * Math.PI * 2.5);
+      groupRef.current.rotation.z = Math.sin(t * 0.3) * 0.05 + (p * Math.PI * 0.5);
+      
+      // Explode Effect: parts pull apart and come back together between slides
+      const explodeIntensity = Math.abs(Math.sin(p * Math.PI * 2));
 
-  const scale = windowWidth < 768 ? 0.7 : 0.8;
-
-  const techStack = [
-    { pos: [4.5, 3, 0], color: '#0ea5e9', label: 'React' },
-    { pos: [-4.5, 3, 0], color: '#3b82f6', label: 'TypeScript' },
-    { pos: [4.5, -3, 0], color: '#06b6d4', label: 'APIs' },
-    { pos: [-4.5, -3, 0], color: '#0284c7', label: 'Cloud' },
-    { pos: [0, 0, 4.5], color: '#0369a1', label: 'Database' },
-    { pos: [0, 0, -4.5], color: '#075985', label: 'Security' },
-  ];
+      if (domeRef.current) domeRef.current.position.x = 0.6 + explodeIntensity * 1.2;
+      if (shellRef.current) shellRef.current.position.x = -0.4 - explodeIntensity * 0.8;
+      if (ringRef.current) ringRef.current.position.x = -1.3 - explodeIntensity * 1.5;
+    }
+  });
 
   return (
-    <group ref={groupRef} scale={[scale, scale, scale]}>
-      {/* Center connection point */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[0.15, 32, 32]} />
-        <meshBasicMaterial color="#0ea5e9" />
+    <group scale={1.2}>
+      {/* Podium Base */}
+      <mesh position={[0, -2.5, 0]} receiveShadow>
+        <cylinderGeometry args={[2.8, 2.8, 0.8, 64]} />
+        <meshStandardMaterial color="#0A24A6" roughness={0.3} metalness={0.1} />
       </mesh>
 
-      {/* Connection lines to tech nodes */}
-      {techStack.map((tech, idx) => (
-        <line key={`line-${idx}`}>
-          <bufferGeometry>
-            <bufferAttribute
-              attach="attributes-position"
-              count={2}
-              array={new Float32Array([0, 0, 0, tech.pos[0], tech.pos[1], tech.pos[2]])}
-              itemSize={3}
-            />
-          </bufferGeometry>
-          <lineBasicMaterial color={tech.color} linewidth={1} transparent opacity={0.3} />
-        </line>
-      ))}
-
-      {/* Tech Stack Nodes */}
-      {techStack.map((tech, idx) => (
-        <group key={`tech-${idx}`} position={tech.pos}>
-          {/* Glowing sphere */}
-          <mesh>
-            <sphereGeometry args={[0.6, 32, 32]} />
-            <meshBasicMaterial color={tech.color} transparent opacity={0.8} />
+      {/* Floating Elements Container */}
+      <group ref={groupRef} position={[0, -0.2, 0]}>
+        
+        {/* Main Solid Dome */}
+        <group ref={domeRef} position={[0.6, 0, 0]} rotation={[0, 0, 0]}>
+          <mesh rotation={[0, 0, -Math.PI / 2]} castShadow>
+            <sphereGeometry args={[1.4, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2]} />
+            <meshStandardMaterial color="#1f69ff" roughness={0.2} metalness={0.1} />
           </mesh>
-
-          {/* Wireframe sphere */}
-          <mesh>
-            <sphereGeometry args={[0.7, 32, 32]} />
-            <meshBasicMaterial color={tech.color} wireframe transparent opacity={0.4} />
+          {/* Back solid cap */}
+          <mesh rotation={[0, -Math.PI / 2, 0]} castShadow>
+            <circleGeometry args={[1.4, 64]} />
+            <meshStandardMaterial color="#1a5add" roughness={0.2} metalness={0.1} />
           </mesh>
-
-          {/* Outer pulse ring */}
-          <mesh>
-            <torusGeometry args={[0.95, 0.05, 16, 100]} />
-            <meshBasicMaterial color={tech.color} transparent opacity={0.6} />
-          </mesh>
-
-          {/* Text label */}
-          <Text position={[0, -1, 0]} fontSize={0.4} color={tech.color} anchorY="top">
-            {tech.label}
-          </Text>
         </group>
-      ))}
 
-      {/* Ambient glow particles */}
-      {[...Array(15)].map((_, i) => {
-        const x = (Math.random() - 0.5) * 8;
-        const y = (Math.random() - 0.5) * 8;
-        const z = (Math.random() - 0.5) * 8;
-        const size = Math.random() * 0.08;
-        const color = ['#0ea5e9', '#3b82f6', '#06b6d4', '#0284c7'][Math.floor(Math.random() * 4)];
+        {/* Floating Curved Shell */}
+        <mesh ref={shellRef} position={[-0.4, -0.1, 0]} rotation={[0, 0, Math.PI / 2.2]} castShadow>
+          <sphereGeometry args={[1.15, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2]} />
+          <meshStandardMaterial color="#88bdfc" roughness={0.2} metalness={0.1} side={THREE.DoubleSide} />
+        </mesh>
 
-        return (
-          <mesh key={`particle-${i}`} position={[x, y, z]}>
-            <sphereGeometry args={[size, 8, 8]} />
-            <meshBasicMaterial color={color} transparent opacity={0.3} />
-          </mesh>
-        );
-      })}
+        {/* Orange Torus */}
+        <mesh ref={ringRef} position={[-1.3, -0.2, 0]} rotation={[Math.PI / 8, Math.PI / 2.2, 0]} castShadow>
+          <torusGeometry args={[0.65, 0.08, 32, 64]} />
+          <meshStandardMaterial color="#fb923c" roughness={0.2} metalness={0.3} />
+        </mesh>
+      </group>
     </group>
   );
 }
 
-function Hero() {
-  return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10 w-full">
-        
-        {/* Text Content */}
-        <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 text-brand-accent text-sm font-medium"
-          >
-            <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
-            Spirora Innovations
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold font-sans tracking-tight leading-tight text-white"
-          >
-            Building the Future with <span className="text-glow text-brand-accent">Spirora</span>
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed"
-          >
-            We engineer premium, performant, and secure digital architectures to help modern businesses scale faster and operate smarter. From SaaS to Enterprise Web Apps.
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <button className="px-6 lg:px-8 py-3 lg:py-4 rounded-full bg-brand-primary text-white font-medium flex items-center justify-center gap-2 group hover:scale-105 transition-transform shadow-[0_0_20px_rgba(79,70,229,0.4)] text-sm lg:text-base">
-              Get Started
-              <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button
-              onClick={() => {
-                // Scroll to works section or show works modal
-                const worksSection = document.getElementById('works-section');
-                if (worksSection) {
-                  worksSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-6 lg:px-8 py-3 lg:py-4 rounded-full glass text-white font-medium flex items-center justify-center gap-2 group hover:bg-white/10 transition-colors text-sm lg:text-base"
-            >
-              View Our Work
-              <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </motion.div>
-        </div>
+export default function Hero() {
+  const containerRef = useRef(null);
+  
+  // Track scroll progress purely within the 600vh container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
 
-        {/* 3D Canvas */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5, delay: 0.4 }}
-          className="h-[350px] sm:h-[450px] lg:h-[600px] xl:h-[700px] w-full relative order-2 lg:order-2"
-        >
-          <Suspense fallback={<SkeletonLoader />}>
-            <Canvas camera={{ position: [0, 0, 8], fov: 50 }} style={{ background: 'transparent' }}>
-              <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
-              <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} enableRotate={true} />
-              <ITConsultingVisualization />
-              <ambientLight intensity={0.6} />
-              <pointLight position={[10, 10, 10]} intensity={1} color="#0ea5e9" />
-              <pointLight position={[-10, -10, -10]} intensity={0.8} color="#3b82f6" />
-            </Canvas>
-          </Suspense>
-        </motion.div>
-        
-      </div>
-    </section>
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // Map scroll progress to the active slide index
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest < 0.33) setActiveSlide(0);
+    else if (latest < 0.66) setActiveSlide(1);
+    else setActiveSlide(2);
+  });
+
+  // Programmable navigation to slide positions
+  const handleDotClick = (index) => {
+    if (containerRef.current) {
+       const vh = window.innerHeight;
+       const offset = containerRef.current.offsetTop;
+       const targetScroll = offset + (index * 2.5 * vh);
+       window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div ref={containerRef} className="h-[600vh] relative w-full z-10 bg-transparent">
+      {/* Sticky actual view fixing the layout on screen while container scrolls */}
+      <section className="sticky top-0 h-screen w-full flex items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-to-br from-[#1b6bff] to-[#0d34de]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row justify-between items-center relative z-10 w-full min-h-[70vh]">
+          
+          {/* Left Content */}
+          <div className="w-full lg:w-[30%] flex flex-col justify-center space-y-2 order-2 lg:order-1 z-20 mt-10 lg:mt-0 text-center lg:text-left min-h-[150px] lg:min-h-[auto]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`left-${activeSlide}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <p className="text-white text-lg tracking-wide font-medium mb-1 lg:mb-4">
+                  {slides[activeSlide].subtitle}
+                </p>
+                <h1 
+                  className="text-[3rem] sm:text-[4.5rem] lg:text-[5.2rem] xl:text-[6.5rem] font-black text-white leading-[0.85] tracking-tighter"
+                  dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Center 3D Object with Scroll Parallax */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, delay: 0.4 }}
+            className="w-full lg:w-[40%] h-[350px] sm:h-[450px] lg:h-[700px] relative order-1 lg:order-2 z-10"
+          >
+            <Suspense fallback={<SkeletonLoader />}>
+              <Canvas shadows camera={{ position: [0, 0, 8.5], fov: 45 }} style={{ background: 'transparent' }} gl={{ antialias: true }}>
+                <PerspectiveCamera makeDefault position={[0, 0, 9]} fov={45} />
+                <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} enableRotate={true} />
+                
+                <ambientLight intensity={0.5} color="#ffffff" />
+                <directionalLight position={[5, 10, 8]} intensity={1.8} color="#ffffff" castShadow shadow-mapSize={[1024, 1024]} />
+                <directionalLight position={[-5, 5, -5]} intensity={1.2} color="#88bdfc" />
+                <pointLight position={[0, -2, 4]} intensity={0.5} color="#1f69ff" />
+                
+                <Abstract3DVisualization scrollYProgress={smoothProgress} />
+              </Canvas>
+            </Suspense>
+          </motion.div>
+
+          {/* Right Content */}
+          <div className="w-full lg:w-[30%] flex flex-col justify-center items-center lg:items-end order-3 mt-12 lg:mt-0 z-20 text-center lg:text-right h-full pt-4 lg:pt-0">
+            <div className="min-h-[60px] lg:min-h-[100px]">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={`desc-${activeSlide}`}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="text-white text-sm lg:text-[15px] max-w-[250px] leading-relaxed font-light"
+                >
+                  {slides[activeSlide].desc}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+            
+            {/* Pagination Dots */}
+            <div className="flex lg:flex-col gap-4 mt-8 lg:mt-16 items-center lg:mb-auto">
+               {slides.map((_, i) => (
+                  <button 
+                    key={`dot-${i}`}
+                    onClick={() => handleDotClick(i)}
+                    className={`rounded-full transition-all duration-300 ${
+                      activeSlide === i 
+                        ? 'w-3 h-3 bg-white shadow-[0_0_15px_rgba(255,255,255,0.9)] scale-110' 
+                        : 'w-2 h-2 bg-[#0a26a3] hover:bg-white/50 cursor-pointer hover:scale-125'
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+               ))}
+            </div>
+            
+            <div className="mt-8 lg:mt-32 w-full flex justify-center lg:justify-end">
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={`tag-${activeSlide}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-white font-bold text-sm tracking-widest"
+                >
+                  {slides[activeSlide].tag}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+    </div>
   );
 }
-
-export default Hero;

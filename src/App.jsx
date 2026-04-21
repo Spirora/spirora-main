@@ -2,6 +2,7 @@ import CustomCursor from './components/CustomCursor';
 import BackgroundMesh from './components/BackgroundMesh';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import ParallaxShowcase from './components/ParallaxShowcase';
 import Services from './components/Services';
 import Works from './components/Works';
 import EnquiryForm from './components/EnquiryForm';
@@ -22,6 +23,7 @@ function App() {
       
       <main>
         <Hero />
+        <ParallaxShowcase />
         <Services />
         <section id="works-section" className="py-20">
           <Works />
