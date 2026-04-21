@@ -157,7 +157,7 @@ export function ArcTimeline(props) {
       onTouchEnd={handleTouchEnd}
     >
       <div className="absolute top-2 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 dark:text-gray-400 z-10">
-        Use ← → arrow keys to navigate
+        Use ← → or swipe to move
       </div>
 
       <div
@@ -257,7 +257,7 @@ export function ArcTimeline(props) {
                             "absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center justify-center text-center transition-all duration-300 ease-in",
                             "w-[200px] sm:w-[280px] lg:w-[320px]",
                             "translate-y-[calc(100%_+_35px)] sm:translate-y-[calc(100%_+_42px)] lg:translate-y-[calc(100%_+_48px)]",
-                            "text-white dark:text-[var(--description-color,#d4d4d4)]",
+                            "text-white dark:text-white",
                             isActive ? "opacity-100" : "opacity-0"
                           )}
                         >

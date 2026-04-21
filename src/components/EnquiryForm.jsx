@@ -9,8 +9,6 @@ function EnquiryForm() {
     phone: '',
     company: '',
     projectType: '',
-    budget: '',
-    timeline: '',
     message: ''
   });
 
@@ -29,22 +27,7 @@ function EnquiryForm() {
     'Other'
   ];
 
-  const budgetRanges = [
-    'Under $10,000',
-    '$10,000 - $25,000',
-    '$25,000 - $50,000',
-    '$50,000 - $100,000',
-    '$100,000+',
-    'Let\'s discuss'
-  ];
 
-  const timelines = [
-    'ASAP',
-    '1-3 months',
-    '3-6 months',
-    '6-12 months',
-    'Flexible'
-  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -73,8 +56,6 @@ function EnquiryForm() {
         phone: '',
         company: '',
         projectType: '',
-        budget: '',
-        timeline: '',
         message: ''
       });
     }, 3000);
@@ -124,7 +105,7 @@ function EnquiryForm() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         onSubmit={handleSubmit}
-        className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-slate-700/50"
+        className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-4 md:p-4 border border-slate-700/50"
       >
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Name */}
@@ -219,47 +200,6 @@ function EnquiryForm() {
             </select>
           </div>
 
-          {/* Budget */}
-          <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">
-              Budget Range
-            </label>
-            <select
-              name="budget"
-              value={formData.budget}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
-            >
-              <option value="" className="bg-slate-800">Select budget range</option>
-              {budgetRanges.map(range => (
-                <option key={range} value={range} className="bg-slate-800">{range}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Timeline */}
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
-              Preferred Timeline
-            </label>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-              {timelines.map(timeline => (
-                <label key={timeline} className="relative">
-                  <input
-                    type="radio"
-                    name="timeline"
-                    value={timeline}
-                    checked={formData.timeline === timeline}
-                    onChange={handleInputChange}
-                    className="sr-only peer"
-                  />
-                  <div className="px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-center text-slate-300 peer-checked:bg-brand-accent peer-checked:text-white peer-checked:border-brand-accent transition-all cursor-pointer hover:border-slate-500">
-                    {timeline}
-                  </div>
-                </label>
-              ))}
-            </div>
-          </div>
 
           {/* Message */}
           <div className="md:col-span-2">

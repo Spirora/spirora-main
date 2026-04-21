@@ -7,17 +7,17 @@ import { ArrowRight, ChevronRight } from 'lucide-react';
 // Skeleton Loader Component
 function SkeletonLoader() {
   return (
-    <Html center>
-      <div className="flex items-center justify-center">
-        <div className="animate-pulse flex space-x-4">
-          <div className="rounded-full bg-slate-700 h-10 w-10"></div>
-          <div className="flex-1 space-y-2 py-1">
-            <div className="h-4 bg-slate-700 rounded w-3/4"></div>
-            <div className="h-4 bg-slate-700 rounded w-1/2"></div>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="flex items-center justify-center w-full">
+        <div className="animate-pulse flex space-x-4 w-1/2">
+          <div className="rounded-full bg-slate-700/50 h-12 w-12 border border-brand-primary/20"></div>
+          <div className="flex-1 space-y-3 py-1">
+            <div className="h-3 bg-slate-700/50 rounded w-3/4"></div>
+            <div className="h-3 bg-slate-700/50 rounded w-1/2"></div>
           </div>
         </div>
       </div>
-    </Html>
+    </div>
   );
 }
 
@@ -180,7 +180,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, delay: 0.4 }}
-          className="h-[350px] sm:h-[450px] lg:h-[600px] xl:h-[700px] w-full relative order-1 lg:order-2"
+          className="h-[350px] sm:h-[450px] lg:h-[600px] xl:h-[700px] w-full relative order-2 lg:order-2"
         >
           <Suspense fallback={<SkeletonLoader />}>
             <Canvas camera={{ position: [0, 0, 8], fov: 50 }} style={{ background: 'transparent' }}>
