@@ -19,7 +19,7 @@ export default function BrandPartners() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6"
           >
             Trusted by rapidly growing <span className="text-glow text-brand-accent">Brands</span>
           </motion.h2>
@@ -28,7 +28,7 @@ export default function BrandPartners() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-lg text-slate-400"
+            className="text-lg text-slate-600"
           >
             We partner with ambitious technology teams to build products, platforms, and experiences that deliver market differentiation, faster time to value, and long-term operational resilience.
           </motion.p>
@@ -43,19 +43,19 @@ export default function BrandPartners() {
               transition={{ duration: 0.8 }}
               className="space-y-4"
             >
-              <p className="text-slate-400 text-lg leading-relaxed">
+              <p className="text-slate-600 text-lg leading-relaxed">
                 Our brand partnerships are built on trust, transparency, and technology leadership. Each collaboration is guided by product strategy, execution discipline, and measurable outcomes.
               </p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="glass p-6 rounded-3xl border border-white/10 shadow-[0_20px_60px_rgba(15,23,42,0.2)]">
-                  <h4 className="text-xl font-semibold text-white mb-2">Enterprise-ready teams</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="glass p-6 rounded-3xl border border-white/60 shadow-xl shadow-slate-200/50">
+                  <h4 className="text-xl font-semibold text-slate-900 mb-2">Enterprise-ready teams</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Dedicated squads that act as an extension of your business and deliver end-to-end product excellence.
                   </p>
                 </div>
-                <div className="glass p-6 rounded-3xl border border-white/10 shadow-[0_20px_60px_rgba(15,23,42,0.2)]">
-                  <h4 className="text-xl font-semibold text-white mb-2">Modern product stacks</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="glass p-6 rounded-3xl border border-white/60 shadow-xl shadow-slate-200/50">
+                  <h4 className="text-xl font-semibold text-slate-900 mb-2">Modern product stacks</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Fast, resilient, data-driven platforms built on industry-leading frameworks, cloud services, and best practices.
                   </p>
                 </div>
@@ -70,11 +70,11 @@ export default function BrandPartners() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-100px' }}
                   transition={{ duration: 0.6, delay: idx * 0.08 }}
-                  className="glass p-5 rounded-3xl border border-white/10"
+                  className="glass p-5 rounded-3xl border border-white/60 shadow-lg shadow-slate-200/50"
                 >
                   <span className="text-sm uppercase tracking-[0.3em] text-brand-accent">Partner</span>
-                  <h3 className="text-xl font-semibold text-white mt-3 mb-2">{partner.name}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{partner.focus}</p>
+                  <h3 className="text-xl font-semibold text-slate-900 mt-3 mb-2">{partner.name}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{partner.focus}</p>
                 </motion.div>
               ))}
             </div>

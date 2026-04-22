@@ -61,10 +61,10 @@ const techIcons = [
   { Icon: FaNode,       color: '#68a063', label: 'Node.js' },
   { Icon: DiJavascript1, color: '#f7df1e', label: 'JS' },
   { Icon: SiTypescript,  color: '#3178c6', label: 'TypeScript' },
-  { Icon: SiNextdotjs,  color: '#ffffff',  label: 'Next.js' },
+  { Icon: SiNextdotjs,  color: '#000000ff',  label: 'Next.js' },
   { Icon: FaGitAlt,     color: '#f34f29', label: 'Git' },
   { Icon: FaDocker,     color: '#2496ed', label: 'Docker' },
-  { Icon: FaGithub,     color: '#ffffff',  label: 'GitHub' },
+  { Icon: FaGithub,     color: '#1d1d1dff',  label: 'GitHub' },
   { Icon: FaAws,        color: '#ff9900', label: 'AWS' },
   { Icon: SiMongodb,    color: '#47a248', label: 'MongoDB' },
   { Icon: SiPostgresql, color: '#336791', label: 'PostgreSQL' },
@@ -77,7 +77,7 @@ const techIcons = [
   { Icon: FaVuejs,      color: '#42b883', label: 'Vue' },
   { Icon: FaGitlab,     color: '#fc6d26', label: 'GitLab' },
   { Icon: SiNginx,      color: '#009900', label: 'Nginx' },
-  { Icon: SiExpress,    color: '#ffffff',  label: 'Express' },
+  { Icon: SiExpress,    color: '#342424ff',  label: 'Express' },
   { Icon: SiJest,       color: '#c21325', label: 'Jest' },
   { Icon: SiCypress,    color: '#17202c', label: 'Cypress' },
   { Icon: SiVite,       color: '#646cff', label: 'Vite' },
@@ -164,13 +164,13 @@ function InteractiveSphere() {
                   width: 36,
                   height: 36,
                   borderRadius: 9,
-                  background: 'rgba(15,23,42,0.82)',
+                  background: 'rgba(255,255,255,0.85)',
                   backdropFilter: 'blur(6px)',
                   border: `1.5px solid ${color}50`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: `0 0 10px ${color}25`,
+                  boxShadow: `0 0 15px rgba(0,0,0,0.05)`,
                   flexShrink: 0,
                 }}
               >
@@ -195,7 +195,7 @@ export default function Process() {
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+             className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6"
           >
             How We <span className="text-glow text-brand-accent">Operate</span>
           </motion.h2>
@@ -204,7 +204,7 @@ export default function Process() {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ delay: 0.1 }}
-             className="text-lg text-slate-400"
+             className="text-lg text-slate-600"
           >
             A streamlined, battle-tested methodology designed for maximum efficiency and quality.
           </motion.p>
@@ -223,7 +223,7 @@ export default function Process() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative z-10 max-w-6xl mx-auto my-24"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-12 text-center">
               Our Process Flow
             </h3>
             <ArcTimeline
@@ -246,7 +246,7 @@ export default function Process() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl font-semibold text-white"
+                className="text-3xl font-semibold text-slate-900"
               >
                 Dynamic delivery with 3D clarity
               </motion.h3>
@@ -255,33 +255,33 @@ export default function Process() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-slate-400 leading-relaxed max-w-2xl"
+                className="text-slate-600 leading-relaxed max-w-2xl"
               >
                 Our operation blends strategy, creative product design, and technical execution into a cohesive, high-velocity system. Each phase is designed to be visible, measurable, and engineered for rapid adaptation as your business evolves.
               </motion.p>
 
               <div className="grid sm:grid-cols-2 gap-6">
-                <div className="glass-card p-6 border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.35)]">
-                  <h4 className="text-xl font-semibold text-white mb-3">Strategic Clarity</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="glass-card p-6 border border-white/60 shadow-xl shadow-slate-200/50">
+                  <h4 className="text-xl font-semibold text-slate-900 mb-3">Strategic Clarity</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     We build a clearly defined roadmap with product goals, risk mitigation, and speed-focused milestones.
                   </p>
                 </div>
-                <div className="glass-card p-6 border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.35)]">
-                  <h4 className="text-xl font-semibold text-white mb-3">Continuous Validation</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="glass-card p-6 border border-white/60 shadow-xl shadow-slate-200/50">
+                  <h4 className="text-xl font-semibold text-slate-900 mb-3">Continuous Validation</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Rapid prototyping, real user feedback, and automated testing ensure every release is stable and impactful.
                   </p>
                 </div>
-                <div className="glass-card p-6 border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.35)]">
-                  <h4 className="text-xl font-semibold text-white mb-3">Scalable Execution</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="glass-card p-6 border border-white/60 shadow-xl shadow-slate-200/50">
+                  <h4 className="text-xl font-semibold text-slate-900 mb-3">Scalable Execution</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     From cloud infrastructure to API strategy, we create systems that grow with your user base and business needs.
                   </p>
                 </div>
-                <div className="glass-card p-6 border border-white/10 shadow-[0_30px_60px_rgba(15,23,42,0.35)]">
-                  <h4 className="text-xl font-semibold text-white mb-3">Measured Impact</h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                <div className="glass-card p-6 border border-white/60 shadow-xl shadow-slate-200/50">
+                  <h4 className="text-xl font-semibold text-slate-900 mb-3">Measured Impact</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Every decision is tied back to business metrics so you understand the value of each sprint and investment.
                   </p>
                 </div>

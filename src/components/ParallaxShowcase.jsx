@@ -298,7 +298,7 @@ export default function ParallaxShowcase() {
     /* 600vh total — 150 vh per slide */
     <div ref={containerRef} className="h-[600vh] relative w-full z-10">
       <section
-        className={`sticky top-0 h-screen w-full flex items-center justify-center pt-20 pb-10 overflow-hidden bg-gradient-to-br transition-all duration-700 ${bgGradients[activeSlide]}`}
+        className="sticky top-0 h-[100dvh] w-full flex items-center justify-center pt-20 pb-10 overflow-hidden bg-transparent transition-all duration-700"
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row justify-between items-center relative z-10 w-full min-h-[70vh]">
 
@@ -313,17 +313,17 @@ export default function ParallaxShowcase() {
                 transition={{ duration: 0.55, ease: 'easeOut' }}
                 className="space-y-3"
               >
-                <p className="text-white/60 text-sm font-semibold tracking-[0.25em] uppercase">
+                <p className="text-slate-500 text-sm font-semibold tracking-[0.25em] uppercase">
                   {slide.subtitle}
                 </p>
                 <h2
-                  className="text-[2.6rem] sm:text-[3.8rem] lg:text-[4.6rem] xl:text-[5.5rem] font-black text-white leading-[0.88] tracking-tighter whitespace-pre-line"
+                  className="text-[2.6rem] sm:text-[3.8rem] lg:text-[4.6rem] xl:text-[5.5rem] font-black text-slate-900 leading-[0.88] tracking-tighter whitespace-pre-line"
                 >
                   {slide.title}
                 </h2>
                 <a
                   href={slide.anchor}
-                  className="inline-flex items-center gap-2 mt-4 px-6 py-2.5 rounded-full bg-white/15 text-white text-sm font-semibold border border-white/20 hover:bg-white/25 transition-colors group"
+                  className="inline-flex items-center gap-2 mt-4 px-6 py-2.5 rounded-full bg-brand-primary text-white text-sm font-semibold border border-brand-primary hover:bg-brand-primary/90 transition-colors group shadow-lg shadow-brand-primary/20"
                 >
                   {slide.cta}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -345,6 +345,8 @@ export default function ParallaxShowcase() {
                 shadows
                 style={{ background: 'transparent' }}
                 gl={{ antialias: true }}
+                dpr={[1, 1.5]}
+                performance={{ min: 0.5 }}
               >
                 <AnimatePresence mode="wait">
                   <SceneForSlide
@@ -368,7 +370,7 @@ export default function ParallaxShowcase() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.55, ease: 'easeOut' }}
-                  className="text-white/80 text-sm lg:text-[14px] max-w-[240px] leading-relaxed font-light"
+                  className="text-slate-600 text-sm lg:text-[14px] max-w-[240px] leading-relaxed font-light"
                 >
                   {slide.desc}
                 </motion.p>
@@ -384,8 +386,8 @@ export default function ParallaxShowcase() {
                   aria-label={`Go to ${slides[i].tag}`}
                   className={`rounded-full transition-all duration-300 ${
                     activeSlide === i
-                      ? 'w-3 h-3 bg-white shadow-[0_0_14px_rgba(255,255,255,0.9)] scale-110'
-                      : 'w-2 h-2 bg-white/25 hover:bg-white/60 hover:scale-125 cursor-pointer'
+                      ? 'w-3 h-3 bg-brand-primary shadow-[0_0_14px_rgba(37,99,235,0.4)] scale-110'
+                      : 'w-2 h-2 bg-slate-300 hover:bg-slate-400 hover:scale-125 cursor-pointer'
                   }`}
                 />
               ))}
@@ -399,7 +401,7 @@ export default function ParallaxShowcase() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="text-white/50 text-xs font-bold tracking-[0.3em] uppercase"
+                className="text-slate-400 text-xs font-bold tracking-[0.3em] uppercase"
               >
                 {slide.tag}
               </motion.p>

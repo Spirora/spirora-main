@@ -28,7 +28,7 @@ function App() {
         <section id="works-section" className="py-20">
           <Works />
         </section>
-        <section className="py-20 bg-slate-900/50">
+        <section className="py-20 bg-slate-100/50">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <EnquiryForm />
           </div>
@@ -37,7 +37,7 @@ function App() {
         <Portfolio />
         {/* <BrandPartners /> */}
         <Process />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <CtaSection />
       </main>
 

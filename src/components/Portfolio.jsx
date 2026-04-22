@@ -6,19 +6,18 @@ const projects = [
     title: 'Nexus AI Dashboard',
     category: 'SaaS Platform',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-    tags: ['React', 'Python', 'TensorFlow']
   },
   {
     title: 'FinTech Mobile App',
     category: 'Mobile Application',
     image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff0f?auto=format&fit=crop&q=80&w=800',
-    tags: ['React Native', 'Node.js', 'PostgreSQL']
+
   },
   {
     title: 'Global Supply Chain',
     category: 'Enterprise Software',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8ed7c80a71?auto=format&fit=crop&q=80&w=800',
-    tags: ['Next.js', 'Go', 'Kubernetes']
+
   }
 ];
 
@@ -32,7 +31,7 @@ export default function Portfolio() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+              className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6"
             >
               Featured <span className="text-glow text-brand-accent">Projects</span>
             </motion.h2>
@@ -41,7 +40,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-slate-400"
+              className="text-lg text-slate-600"
             >
               Explore how we've helped industry leaders redefine their digital presence and operational capabilities.
             </motion.p>
@@ -50,7 +49,7 @@ export default function Portfolio() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="hidden md:flex px-6 py-3 rounded-full border border-brand-accent/50 text-white font-medium hover:bg-brand-accent/10 transition-colors shrink-0"
+            className="hidden md:flex px-6 py-3 rounded-full border border-slate-300 text-slate-700 font-medium hover:bg-brand-primary/10 hover:border-brand-primary hover:text-brand-primary transition-colors shrink-0"
           >
             View All Work
           </motion.button>
@@ -64,7 +63,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: idx * 0.2 }}
-              className="group relative rounded-2xl overflow-hidden glass border border-white/10 cursor-pointer hover:border-brand-accent/40 transition-all duration-500"
+              className="group relative rounded-2xl overflow-hidden glass border border-white/60 cursor-pointer hover:border-brand-accent/40 transition-all duration-500 shadow-xl shadow-brand-primary/5"
             >
               <div className="absolute inset-0 bg-brand-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay z-10" />
               
@@ -79,29 +78,22 @@ export default function Portfolio() {
               </div>
 
               <div className="p-6 relative z-20 -mt-12">
-                 <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1 text-xs font-medium bg-brand-dark/80 text-brand-accent rounded-full border border-brand-accent/20 backdrop-blur-md">
-                        {tag}
-                      </span>
-                    ))}
-                 </div>
                  
-                 <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-brand-accent transition-colors">
+                 <div className="flex justify-between items-center">
+                    <h3 className="mt-6 text-xl font-bold text-slate-900 group-hover:text-brand-accent transition-colors">
                       {project.title}
                     </h3>
-                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300">
-                       <div className="p-2 bg-white/10 rounded-full hover:bg-brand-primary transition-colors">
+                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300 mt-8">
+                       <div className="p-2 bg-brand-primary rounded-full hover:bg-brand-accent transition-colors shadow-lg">
                          <GitFork className="w-4 h-4 text-white" />
                        </div>
-                       <div className="p-2 bg-white/10 rounded-full hover:bg-brand-primary transition-colors">
+                       <div className="p-2 bg-brand-primary rounded-full hover:bg-brand-accent transition-colors shadow-lg">
                          <ExternalLink className="w-4 h-4 text-white" />
                        </div>
                     </div>
                  </div>
                  
-                 <p className="text-sm text-slate-400 font-medium tracking-wide">
+                 <p className="text-sm text-slate-600 font-medium tracking-wide">
                    {project.category}
                  </p>
               </div>

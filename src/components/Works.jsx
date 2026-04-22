@@ -107,7 +107,7 @@ function Works() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="relative z-10">
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
@@ -118,7 +118,7 @@ function Works() {
         <div className="max-w-7xl mx-auto">
           <button
             onClick={handleBackToHome}
-            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8 group"
+            className="flex items-center gap-2 text-slate-500 hover:text-brand-primary transition-colors mb-8 group"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             Back to Home
@@ -129,7 +129,7 @@ function Works() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-6xl font-bold text-white mb-4"
+              className="text-4xl md:text-6xl font-bold text-slate-900 mb-4"
             >
               Our <span className="text-glow text-brand-accent">Portfolio</span>
             </motion.h1>
@@ -137,7 +137,7 @@ function Works() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl text-slate-400 max-w-3xl mx-auto"
+              className="text-xl text-slate-600 max-w-3xl mx-auto"
             >
               Discover our latest projects and see how we've helped businesses transform their digital presence
             </motion.p>
@@ -161,7 +161,7 @@ function Works() {
                 className={`px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
                   selectedCategory === category
                     ? 'bg-brand-accent text-white shadow-lg shadow-brand-accent/25'
-                    : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 hover:text-white border border-slate-700'
+                    : 'bg-white/60 text-slate-600 hover:bg-white hover:text-brand-primary border border-slate-200'
                 }`}
               >
                 {category}
@@ -186,11 +186,11 @@ function Works() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative bg-slate-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-slate-700/50 hover:border-brand-accent/50 transition-all duration-300 cursor-pointer"
+                className="group relative bg-white/60 backdrop-blur-sm rounded-xl overflow-hidden border border-white/80 hover:border-brand-primary/50 transition-all duration-300 cursor-pointer shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-brand-primary/10"
                 onClick={() => setSelectedWork(work)}
               >
                 {/* Image Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
+                <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
                   <div className="text-6xl opacity-50">{work.category === 'Full-Stack Development' ? '💻' : work.category === 'Enterprise Software' ? '🏢' : work.category === 'Data Visualization' ? '📊' : work.category === 'IoT & Mobile' ? '📱' : work.category === 'AI & Machine Learning' ? '🤖' : work.category === 'Blockchain' ? '⛓️' : '🚀'}</div>
                 </div>
 
@@ -203,23 +203,23 @@ function Works() {
                     <span className="text-xs text-slate-500">{work.year}</span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-accent transition-colors">
                     {work.title}
                   </h3>
 
-                  <p className="text-slate-400 text-sm mb-4 line-clamp-2">
+                  <p className="text-slate-600 text-sm mb-4 line-clamp-2">
                     {work.description}
                   </p>
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {work.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="text-xs px-2 py-1 bg-slate-700/50 text-slate-300 rounded">
+                      <span key={tech} className="text-xs px-2 py-1 bg-slate-100/80 text-slate-700 rounded border border-slate-200">
                         {tech}
                       </span>
                     ))}
                     {work.technologies.length > 3 && (
-                      <span className="text-xs px-2 py-1 bg-slate-700/50 text-slate-300 rounded">
+                      <span className="text-xs px-2 py-1 bg-slate-100/80 text-slate-700 rounded border border-slate-200">
                         +{work.technologies.length - 3}
                       </span>
                     )}
@@ -241,14 +241,14 @@ function Works() {
                     <div className="flex items-center gap-2">
                       <a
                         href={work.liveUrl}
-                        className="p-2 text-slate-400 hover:text-brand-accent transition-colors"
+                        className="p-2 text-slate-500 hover:text-brand-accent transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
                       <a
                         href={work.githubUrl}
-                        className="p-2 text-slate-400 hover:text-brand-accent transition-colors"
+                        className="p-2 text-slate-500 hover:text-brand-accent transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <FaGithub className="w-4 h-4" />
@@ -271,25 +271,25 @@ function Works() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4"
           onClick={() => setSelectedWork(null)}
         >
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-slate-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-8">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="text-3xl font-bold text-white mb-2">{selectedWork.title}</h2>
+                  <h2 className="text-3xl font-bold text-slate-900 mb-2">{selectedWork.title}</h2>
                   <p className="text-brand-accent font-medium">{selectedWork.category}</p>
                 </div>
                 <button
                   onClick={() => setSelectedWork(null)}
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="text-slate-500 hover:text-slate-900 transition-colors"
                 >
                   ✕
                 </button>
@@ -297,7 +297,7 @@ function Works() {
 
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <div className="aspect-video bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg flex items-center justify-center mb-6">
+                  <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg flex items-center justify-center mb-6">
                     <div className="text-8xl opacity-50">
                       {selectedWork.category === 'Full-Stack Development' ? '💻' :
                        selectedWork.category === 'Enterprise Software' ? '🏢' :
@@ -311,27 +311,27 @@ function Works() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <Users className="w-5 h-5 text-brand-accent" />
-                      <span className="text-slate-300">{selectedWork.teamSize}</span>
+                      <span className="text-slate-700">{selectedWork.teamSize}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Calendar className="w-5 h-5 text-brand-accent" />
-                      <span className="text-slate-300">{selectedWork.duration}</span>
+                      <span className="text-slate-700">{selectedWork.duration}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Globe className="w-5 h-5 text-brand-accent" />
-                      <span className="text-slate-300">{selectedWork.client}</span>
+                      <span className="text-slate-700">{selectedWork.client}</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-4">Project Overview</h3>
-                  <p className="text-slate-300 mb-6">{selectedWork.description}</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">Project Overview</h3>
+                  <p className="text-slate-600 mb-6">{selectedWork.description}</p>
 
-                  <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
+                  <h4 className="text-lg font-semibold text-slate-900 mb-3">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {selectedWork.technologies.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-brand-accent/20 text-brand-accent rounded-full text-sm">
+                      <span key={tech} className="px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full text-sm font-medium">
                         {tech}
                       </span>
                     ))}
@@ -340,14 +340,14 @@ function Works() {
                   <div className="flex gap-4">
                     <a
                       href={selectedWork.liveUrl}
-                      className="flex items-center gap-2 px-4 py-2 bg-brand-accent text-white rounded-lg hover:bg-brand-accent/90 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary/90 transition-colors shadow-lg shadow-brand-primary/20"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Live
                     </a>
                     <a
                       href={selectedWork.githubUrl}
-                      className="flex items-center gap-2 px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200 border border-slate-200 transition-colors"
                     >
                       <FaGithub className="w-4 h-4" />
                       Source Code

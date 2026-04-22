@@ -76,8 +76,8 @@ function EnquiryForm() {
         >
           <CheckCircle className="w-10 h-10 text-green-500" />
         </motion.div>
-        <h3 className="text-2xl font-bold text-white mb-4">Thank You!</h3>
-        <p className="text-slate-400 text-lg">
+        <h3 className="text-2xl font-bold text-slate-900 mb-4">Thank You!</h3>
+        <p className="text-slate-600 text-lg">
           Your enquiry has been submitted successfully. We'll get back to you within 24 hours.
         </p>
       </motion.div>
@@ -92,10 +92,10 @@ function EnquiryForm() {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
           Let's Start a <span className="text-glow text-brand-accent">Conversation</span>
         </h2>
-        <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
           Ready to bring your vision to life? Tell us about your project and let's create something amazing together.
         </p>
       </motion.div>
@@ -105,12 +105,12 @@ function EnquiryForm() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         onSubmit={handleSubmit}
-        className="bg-brand-deep/60 backdrop-blur-sm rounded-2xl p-4 md:p-4 border border-brand-primary/25"
+        className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 md:p-4 border border-white/80 shadow-xl shadow-slate-200/50"
       >
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Name */}
           <div className="relative">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-sm font-medium text-slate-700 mb-2">
               Full Name *
             </label>
             <div className="relative">
@@ -120,7 +120,7 @@ function EnquiryForm() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all shadow-sm"
                 placeholder="John Doe"
               />
             </div>
@@ -128,7 +128,7 @@ function EnquiryForm() {
 
           {/* Email */}
           <div className="relative">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-sm font-medium text-slate-700 mb-2">
               Email Address *
             </label>
             <div className="relative">
@@ -139,7 +139,7 @@ function EnquiryForm() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-white/80 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all shadow-sm"
                 placeholder="john@example.com"
               />
             </div>
@@ -147,7 +147,7 @@ function EnquiryForm() {
 
           {/* Phone */}
           <div className="relative">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-sm font-medium text-slate-700 mb-2">
               Phone Number
             </label>
             <div className="relative">
@@ -157,7 +157,7 @@ function EnquiryForm() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-white/80 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all shadow-sm"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -165,7 +165,7 @@ function EnquiryForm() {
 
           {/* Company */}
           <div className="relative">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-sm font-medium text-slate-700 mb-2">
               Company Name
             </label>
             <div className="relative">
@@ -175,7 +175,7 @@ function EnquiryForm() {
                 name="company"
                 value={formData.company}
                 onChange={handleInputChange}
-                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 bg-white/80 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all shadow-sm"
                 placeholder="Your Company"
               />
             </div>
@@ -183,7 +183,7 @@ function EnquiryForm() {
 
           {/* Project Type */}
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-sm font-medium text-slate-700 mb-2">
               Project Type *
             </label>
             <select
@@ -191,11 +191,11 @@ function EnquiryForm() {
               value={formData.projectType}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white/80 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all shadow-sm"
             >
-              <option value="" className="bg-brand-dark">Select project type</option>
+              <option value="" className="bg-white">Select project type</option>
               {projectTypes.map(type => (
-                <option key={type} value={type} className="bg-brand-dark">{type}</option>
+                <option key={type} value={type} className="bg-white">{type}</option>
               ))}
             </select>
           </div>
@@ -203,7 +203,7 @@ function EnquiryForm() {
 
           {/* Message */}
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-slate-300 mb-2">
+            <label className="block text-sm font-medium text-slate-700 mb-2">
               Project Details *
             </label>
             <div className="relative">
@@ -214,7 +214,7 @@ function EnquiryForm() {
                 onChange={handleInputChange}
                 required
                 rows={4}
-                className="w-full pl-10 pr-4 py-3 bg-brand-dark/70 border border-brand-primary/25 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none"
+                className="w-full pl-10 pr-4 py-3 bg-white/80 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none shadow-sm"
                 placeholder="Tell us about your project, goals, challenges, and any specific requirements..."
               />
             </div>

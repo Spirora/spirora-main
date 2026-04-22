@@ -6,32 +6,47 @@
 
 @layer base {
   body {
-    @apply bg-brand-dark text-slate-100 font-sans antialiased overflow-x-hidden;
-    background: linear-gradient(160deg, #060d1f 0%, #0a1a4a 50%, #060d1f 100%);
+    @apply bg-slate-50 text-slate-900 font-sans antialiased overflow-x-hidden;
+    background: linear-gradient(160deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%);
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+    @apply bg-white/70 backdrop-blur-lg border border-white/40;
   }
-  
+
   .glass-card {
-    background: linear-gradient(135deg, rgba(31,105,255,0.08) 0%, rgba(6,13,31,0.6) 100%);
-    @apply backdrop-blur-xl border border-brand-primary/20 rounded-2xl shadow-xl transition-all duration-300;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+    @apply backdrop-blur-xl border border-white/60 rounded-2xl shadow-xl transition-all duration-300;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    /* Soft light shadow */
   }
 
   .text-glow {
-    text-shadow: 0 0 24px rgba(56,189,248,0.55);
+    text-shadow: 0 0 24px rgba(37, 99, 235, 0.3);
+    /* Softer blue glow for light mode */
   }
 
   .blue-section {
-    background: linear-gradient(180deg, rgba(10,26,74,0.0) 0%, rgba(10,26,74,0.5) 50%, rgba(10,26,74,0.0) 100%);
+    background: linear-gradient(180deg, rgba(226, 232, 240, 0.0) 0%, rgba(226, 232, 240, 0.5) 50%, rgba(226, 232, 240, 0.0) 100%);
   }
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #060d1f; }
-::-webkit-scrollbar-thumb { background: #1f69ff; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

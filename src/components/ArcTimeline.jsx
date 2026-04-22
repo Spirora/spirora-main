@@ -247,7 +247,7 @@ export function ArcTimeline(props) {
                             "absolute bottom-0 left-1/2 aspect-square -translate-x-1/2 transition-all duration-300",
                             isActive
                               ? "translate-y-[calc(100%_+_12px)] sm:translate-y-[calc(100%_+_14px)] lg:translate-y-[calc(100%_+_16px)] scale-[1.1] sm:scale-[1.2] text-blue-600 "
-                              : "translate-y-[calc(100%_+_3px)] sm:translate-y-[calc(100%_+_4px)] lg:translate-y-[calc(100%_+_5px)] scale-90 sm:scale-100 text-gray-200"
+                              : "translate-y-[calc(100%_+_3px)] sm:translate-y-[calc(100%_+_4px)] lg:translate-y-[calc(100%_+_5px)] scale-90 sm:scale-100 text-slate-400 dark:text-gray-200"
                           )}
                         >
                           {step.icon}
@@ -257,7 +257,7 @@ export function ArcTimeline(props) {
                             "absolute bottom-0 left-1/2 flex -translate-x-1/2 items-center justify-center text-center transition-all duration-300 ease-in",
                             "w-[200px] sm:w-[280px] lg:w-[320px]",
                             "translate-y-[calc(100%_+_35px)] sm:translate-y-[calc(100%_+_42px)] lg:translate-y-[calc(100%_+_48px)]",
-                            "text-white dark:text-white",
+                            "text-slate-900 ",
                             isActive ? "opacity-100" : "opacity-0"
                           )}
                         >

@@ -17,10 +17,10 @@ export default function CtaSection() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/15 rounded-full blur-[80px]" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-primary/15 rounded-full blur-[80px]" />
           
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 relative z-10">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6 relative z-10">
             Ready to <span className="text-glow text-brand-accent">Scale?</span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto relative z-10">
+          <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto relative z-10">
             Let's build something extraordinary. Get in touch today and discover how <span className="text-glow text-brand-accent">Spirora</span> can accelerate your vision.
           </p>
           

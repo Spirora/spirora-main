@@ -137,7 +137,7 @@ export default function Hero() {
   return (
     <div ref={containerRef} className="h-[600vh] relative w-full z-10 bg-transparent">
       {/* Sticky actual view fixing the layout on screen while container scrolls */}
-      <section className="sticky top-0 h-screen w-full flex items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-to-br from-[#1b6bff] to-[#0d34de]">
+      <section className="sticky top-0 h-[100dvh] w-full flex items-center justify-center pt-24 pb-12 overflow-hidden bg-transparent">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col lg:flex-row justify-between items-center relative z-10 w-full min-h-[70vh]">
           
           {/* Left Content */}
@@ -150,11 +150,11 @@ export default function Hero() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                <p className="text-white text-lg tracking-wide font-medium mb-1 lg:mb-4">
+                <p className="text-slate-500 text-lg tracking-wide font-medium mb-1 lg:mb-4">
                   {slides[activeSlide].subtitle}
                 </p>
                 <h1 
-                  className="text-[3rem] sm:text-[4.5rem] lg:text-[5.2rem] xl:text-[6.2rem] font-black text-white leading-[0.95] tracking-tighter"
+                  className="text-[3rem] sm:text-[4.5rem] lg:text-[5.2rem] xl:text-[6.2rem] font-black text-slate-900 leading-[0.95] tracking-tighter"
                   dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
                 />
               </motion.div>
@@ -169,7 +169,7 @@ export default function Hero() {
             className="w-full lg:w-[40%] h-[350px] sm:h-[450px] lg:h-[700px] relative order-1 lg:order-2 z-10"
           >
             <Suspense fallback={<SkeletonLoader />}>
-              <Canvas shadows camera={{ position: [0, 0, 8.5], fov: 45 }} style={{ background: 'transparent' }} gl={{ antialias: true }}>
+              <Canvas shadows camera={{ position: [0, 0, 8.5], fov: 45 }} style={{ background: 'transparent' }} gl={{ antialias: true }} dpr={[1, 1.5]} performance={{ min: 0.5 }}>
                 <PerspectiveCamera makeDefault position={[0, 0, 9]} fov={45} />
                 <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} enableRotate={true} />
                 
@@ -193,7 +193,7 @@ export default function Hero() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="text-white text-sm lg:text-[15px] max-w-[250px] leading-relaxed font-light"
+                  className="text-slate-600 text-sm lg:text-[15px] max-w-[250px] leading-relaxed font-light"
                 >
                   {slides[activeSlide].desc}
                 </motion.p>
@@ -208,8 +208,8 @@ export default function Hero() {
                     onClick={() => handleDotClick(i)}
                     className={`rounded-full transition-all duration-300 ${
                       activeSlide === i 
-                        ? 'w-3 h-3 bg-white shadow-[0_0_15px_rgba(255,255,255,0.9)] scale-110' 
-                        : 'w-2 h-2 bg-[#0a26a3] hover:bg-white/50 cursor-pointer hover:scale-125'
+                        ? 'w-3 h-3 bg-brand-primary shadow-[0_0_15px_rgba(37,99,235,0.4)] scale-110' 
+                        : 'w-2 h-2 bg-slate-300 hover:bg-slate-400 cursor-pointer hover:scale-125'
                     }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
@@ -224,7 +224,7 @@ export default function Hero() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="text-white font-bold text-sm tracking-widest"
+                  className="text-slate-400 font-bold text-sm tracking-widest"
                 >
                   {slides[activeSlide].tag}
                 </motion.div>

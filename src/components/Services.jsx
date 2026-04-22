@@ -53,7 +53,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6"
           >
             Digital <span className="text-glow text-brand-accent">Excellence</span> Delivered
           </motion.h2>
@@ -62,7 +62,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-slate-400"
+            className="text-lg text-slate-600"
           >
             We provide specialized technology services to accelerate your digital transformation and build products users love.
           </motion.p>
@@ -87,10 +87,10 @@ export default function Services() {
                 <div className={`absolute inset-0 bg-current opacity-20 blur-xl group-hover:opacity-40 transition-opacity ${service.color}`} />
                 <service.icon className={`w-7 h-7 relative z-10 ${service.color}`} strokeWidth={1.5} />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-brand-accent transition-colors">
+              <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-brand-accent transition-colors">
                 {service.title}
               </h3>
-              <p className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed">
+              <p className="text-sm text-slate-600 group-hover:text-slate-700 transition-colors leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
