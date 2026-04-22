@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.spirora.in/sitemap.xml
+
+# Block common crawl traps
+Disallow: /api/
+Disallow: /*.json$

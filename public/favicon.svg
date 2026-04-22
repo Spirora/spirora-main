@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#1f69ff"/>
+  <!-- Spirora triple-bar logo mark -->
+  <rect x="9"  y="8"  width="4" height="16" rx="2" fill="rgba(255,255,255,0.7)"/>
+  <rect x="14" y="5"  width="5" height="22" rx="2.5" fill="white"/>
+  <rect x="20" y="8"  width="4" height="16" rx="2" fill="rgba(255,255,255,0.7)"/>
+</svg>
