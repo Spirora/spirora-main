@@ -71,7 +71,7 @@ export default function About() {
               Engineering the <span className="text-glow text-brand-accent">Edge</span> of Innovation
             </h2>
             <p className="text-lg text-slate-400 leading-relaxed mb-4">
-              XenonTech is not just an agency; we are your strategic technical partner. 
+              <span className="text-glow text-brand-accent font-bold">Spirora</span> is not just an agency; we are your strategic technical partner. 
               We blend futuristic design with robust, scalable architectures to build software 
               that leads the market.
             </p>

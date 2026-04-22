@@ -11,41 +11,41 @@ import { Monitor, Cloud, Code2, CreditCard, ArrowRight } from 'lucide-react';
 const slides = [
   {
     tag: 'SERVICES',
-    subtitle: 'What We Build',
-    title: 'DIGITAL\nEXCELLENCE\nDELIVERED',
-    desc: 'Web & App Development, SaaS, Enterprise Software and POS — engineered for scale, speed and reliability.',
+    subtitle: 'What We Deliver',
+    title: 'DIGITAL\nSYSTEMS\nENGINEERED',
+    desc: 'Web, mobile, AI solutions and secure software — built to scale, adapt, and perform under real-world demands.',
     anchor: '#services',
     cta: 'Explore Services',
     accent: '#1f69ff',
     shape: 'helix',
   },
   {
-    tag: 'OUR WORK',
-    subtitle: 'Case Studies',
-    title: 'AWARD\nWINNING\nPROJECTS',
-    desc: 'From FinTech dashboards to blockchain voting systems — we have shipped 50+ high-impact products worldwide.',
+    tag: 'CAPABILITIES',
+    subtitle: 'What We Solve',
+    title: 'AI\nSECURITY\nSOFTWARE',
+    desc: 'From intelligent automation to secure infrastructures — we design solutions that simplify and strengthen businesses.',
     anchor: '#works-section',
-    cta: 'View All Work',
+    cta: 'View Capabilities',
     accent: '#06b6d4',
     shape: 'grid',
   },
   {
-    tag: 'PORTFOLIO',
-    subtitle: 'Featured Projects',
-    title: 'PRODUCTS\nTHAT\nSCOPE',
-    desc: 'Nexus AI, FinTech Mobile, Global Supply Chain — explore how we turn complex problems into elegant solutions.',
+    tag: 'PROJECTS',
+    subtitle: 'What We’ve Built',
+    title: 'REAL\nWORLD\nSOLUTIONS',
+    desc: 'POS systems, business platforms, and industry websites — crafted to solve practical challenges with precision.',
     anchor: '#portfolio',
-    cta: 'See Portfolio',
+    cta: 'See Projects',
     accent: '#8b5cf6',
     shape: 'dna',
   },
   {
     tag: 'ABOUT US',
     subtitle: 'Who We Are',
-    title: 'ENGINEERING\nTHE\nEDGE',
-    desc: 'Spirora Innovations — precision engineers, experience designers and your strategic technology partners.',
+    title: 'BUILDING\nWITH\nPURPOSE',
+    desc: 'Spirora Innovations — a focused team shaping intelligent, secure, and scalable digital experiences.',
     anchor: '#about',
-    cta: 'Meet the Team',
+    cta: 'Meet Spirora',
     accent: '#f59e0b',
     shape: 'torus',
   },
@@ -286,7 +286,7 @@ export default function ParallaxShowcase() {
 
   // Interpolated gradient background per slide
   const bgGradients = [
-    'from-[#1b6bff] to-[#0d34de]',
+    'bg-gradient-to-br from-[#1b6bff] to-[#0d34de]',
     'from-[#0284c7] to-[#0d34de]',
     'from-[#4f46e5] to-[#1d1575]',
     'from-[#b45309] to-[#0d34de]',
@@ -333,7 +333,7 @@ export default function ParallaxShowcase() {
           </div>
 
           {/* ── CENTER 3D ── */}
-          <div className="w-full lg:w-[40%] h-[350px] sm:h-[440px] lg:h-[680px] relative order-1 lg:order-2 z-10">
+          <div className="w-full lg:w-[40%] h-[350px] sm:h-[440px] lg:h-[680px] relative order-1 lg:order-2 z-10 pb-3">
             <Suspense
               fallback={
                 <div className="absolute inset-0 flex items-center justify-center">

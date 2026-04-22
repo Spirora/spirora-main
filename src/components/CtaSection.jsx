@@ -21,7 +21,7 @@ export default function CtaSection() {
             Ready to <span className="text-glow text-brand-accent">Scale?</span>
           </h2>
           <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto relative z-10">
-            Let's build something extraordinary. Get in touch today and discover how XenonTech can accelerate your vision.
+            Let's build something extraordinary. Get in touch today and discover how <span className="text-glow text-brand-accent">Spirora</span> can accelerate your vision.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">

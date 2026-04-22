@@ -6,23 +6,23 @@ import * as THREE from 'three';
 
 const slides = [
   {
-    title: "BEST<br />3D WEB<br />DESIGNS",
-    subtitle: "Announcement",
-    desc: "Revealing the results of the Dora 3D web design challenge which happened last October",
-    tag: "2023"
+    title: "THINK DIGITAL<br />THINK SPIRORA<br />",
+    subtitle: "Precision",
+    desc: "Engineered digital systems built to perform flawlessly at every scale",
+    tag: "2026"
   },
   {
     title: "CREATIVE<br />DIGITAL<br />SOLUTIONS",
-    subtitle: "Innovation",
-    desc: "We build intuitive and stunning interfaces that redefine modern user experiences.",
-    tag: "AWARDS"
+    subtitle: "Craft",
+    desc: "Refined design experiences shaped with clarity, intent, and quiet detail",
+    tag: "GLOBAL"
   },
-  {
-    title: "FUTURE<br />OF WEB<br />INTERFACES",
-    subtitle: "Vision",
-    desc: "Pushing the boundaries of interactive design with bleeding-edge technologies.",
-    tag: "FUTURE"
-  }
+ {
+  title: "FUTURE<br />OF DIGITAL<br />EXPERIENCES",
+  subtitle: "Intelligence",
+  desc: "Next-generation systems powered by AI, built for seamless and secure interaction",
+  tag: "FUTURE"
+}
 ];
 
 function SkeletonLoader() {
@@ -154,7 +154,7 @@ export default function Hero() {
                   {slides[activeSlide].subtitle}
                 </p>
                 <h1 
-                  className="text-[3rem] sm:text-[4.5rem] lg:text-[5.2rem] xl:text-[6.5rem] font-black text-white leading-[0.85] tracking-tighter"
+                  className="text-[3rem] sm:text-[4.5rem] lg:text-[5.2rem] xl:text-[6.2rem] font-black text-white leading-[0.95] tracking-tighter"
                   dangerouslySetInnerHTML={{ __html: slides[activeSlide].title }}
                 />
               </motion.div>

@@ -34,7 +34,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4"
+            className="lg:col-span-5"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="relative">
@@ -93,7 +93,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2"
+            className="lg:col-span-3"
           >
             <h4 className="text-xl font-bold text-white mb-6">Services</h4>
             <ul className="space-y-3">
@@ -134,27 +134,10 @@ export default function Footer() {
               <li><a href="#works-section" className="text-slate-400 hover:text-brand-accent transition-colors">Our Work</a></li>
               <li><a href="#process" className="text-slate-400 hover:text-brand-accent transition-colors">Our Process</a></li>
               <li><a href="#testimonials" className="text-slate-400 hover:text-brand-accent transition-colors">Testimonials</a></li>
-              <li><a href="#contact" className="text-slate-400 hover:text-brand-accent transition-colors">Contact Us</a></li>
+              <li><a href="#enquiry" className="text-slate-400 hover:text-brand-accent transition-colors">Contact Us</a></li>
             </ul>
           </motion.div>
 
-          {/* Resources */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-2"
-          >
-            <h4 className="text-xl font-bold text-white mb-6">Resources</h4>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-slate-400 hover:text-brand-accent transition-colors">Blog</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-brand-accent transition-colors">Case Studies</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-brand-accent transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-brand-accent transition-colors">Support</a></li>
-              <li><a href="#" className="text-slate-400 hover:text-brand-accent transition-colors">Privacy Policy</a></li>
-            </ul>
-          </motion.div>
 
           {/* Contact Info */}
           <motion.div
@@ -170,12 +153,12 @@ export default function Footer() {
                 <Mail className="w-5 h-5 text-brand-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-slate-300 font-medium">Email Us</p>
-                  <a href="mailto:hello@spirorainnovations.com" className="text-slate-400 hover:text-brand-accent transition-colors text-sm">
-                    hello@spirorainnovations.com
+                  <a href="mailto:spirora.innovations@gmail.com" className="text-slate-400 hover:text-brand-accent transition-colors text-sm">
+                    spirora.innovations@gmail.com
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              {/* <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-brand-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-slate-300 font-medium">Call Us</p>
@@ -183,14 +166,13 @@ export default function Footer() {
                     +1 (234) 567-8900
                   </a>
                 </div>
-              </div>
+              </div> */}
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-accent mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-slate-300 font-medium">Visit Us</p>
                   <p className="text-slate-400 text-sm">
-                    123 Innovation Drive<br />
-                    Tech City, TC 12345
+                    Palakkad, Kerala, India
                   </p>
                 </div>
               </div>
