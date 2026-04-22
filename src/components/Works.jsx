@@ -107,7 +107,7 @@ function Works() {
   };
 
   return (
-    <div className="relative z-10">
+    <div className="relative z-10" id="works-section">
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}

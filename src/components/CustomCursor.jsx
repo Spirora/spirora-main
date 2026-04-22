@@ -1,12 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
+// Detect if the primary input is touch-only (phones/tablets without mouse)
+function isTouchOnlyDevice() {
+  return (
+    typeof window !== 'undefined' &&
+    window.matchMedia('(pointer: coarse)').matches &&
+    !window.matchMedia('(pointer: fine)').matches
+  );
+}
+
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -200, y: -200 });
   const [isHovering, setIsHovering] = useState(false);
+  // Hide the cursor on pure touch devices — the OS provides its own touch feedback.
+  const [hidden] = useState(() => isTouchOnlyDevice());
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
+    if (hidden) return;
+
+    // --- Mouse tracking ---
+    const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -23,14 +37,39 @@ export default function CustomCursor() {
       }
     };
 
-    window.addEventListener('mousemove', updateMousePosition);
+    // --- Touch tracking (for mixed-input / hybrid devices) ---
+    // Use `touchmove` so the cursor follows the finger continuously during a scroll,
+    // not just when a tap starts or ends.
+    const handleTouchMove = (e) => {
+      const touch = e.changedTouches[0];
+      if (touch) {
+        setMousePosition({ x: touch.clientX, y: touch.clientY });
+      }
+    };
+
+    const handleTouchStart = (e) => {
+      const touch = e.changedTouches[0];
+      if (touch) {
+        setMousePosition({ x: touch.clientX, y: touch.clientY });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleMouseOver);
+    // passive: true is important for touchmove — avoids blocking scroll
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
-  }, []);
+  }, [hidden]);
+
+  // Don't render anything on touch-only devices
+  if (hidden) return null;
 
   return (
     <>

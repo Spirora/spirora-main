@@ -16,7 +16,6 @@ export default function Navbar() {
     { label: 'About Us',   href: '#about' },
     { label: 'Works',      href: '#works-section' },
     { label: 'Portfolio',  href: '#portfolio' },
-    { label: 'Contact Us', href: '#enquiry' },
   ];
 
   return (
